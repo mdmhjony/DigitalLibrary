@@ -1,3 +1,32 @@
+<?php
+include 'config.php';
+
+$sql = "SELECT * FROM `userlist` WHERE 1";
+$result1 = mysqli_query($conn, $sql);
+$userids=array();
+$usertime=array();
+
+while ($row = mysqli_fetch_array($result1) ) { 
+  
+       echo $row['userId'];
+	   array_push($userids,$row['userId']);
+	   array_push($usertime,$row['Time']);
+
+
+
+   
+ 
+   
+
+}
+
+// for($i=0;$i<=100;$i++){
+// 	echo $userinfo[0];
+// }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,15 +109,19 @@
 
 			<ul class="box-info">
 				<li>
+
 					<span class="text">
 						<h3>FAN</h3>
 						<button type="submit" style="cursor: pointer; background-color:greenyellow ; width:8vh;">OFF</button>
 						<button  type="submit" style=" cursor: pointer; background-color:greenyellow ;width:8vh;">ON</button>
 					</span>
+
 				</li>
 				<li>
 					<span class="text">
+
 						<h3>LIGHT</h3>
+
 						<button type="submit" style="cursor: pointer; background-color:greenyellow ; width:8vh;">OFF</button>
 						<button  type="submit" style=" cursor: pointer; background-color:greenyellow ;width:8vh;">ON</button>
 					</span>
@@ -104,13 +137,40 @@
 					<table>
 						<thead>
 							<tr>
-								<th>User</th>
-								<th>Date</th>
+								<th>UserID</th>
+								<!-- <th>Date</th> -->
 								<th>keep Time</th>
 								<th>Take Time</th>
 							</tr>
 						</thead>
 						<tbody>
+							
+								<?php
+
+                         for($i=0;$i<count($userids);$i++){
+
+								echo '<tr>
+								  
+								<td>
+									<img src="img/people.png">
+									<p>'.$userids[$i].'</p>
+								</td>
+								<td>'.$usertime[$i].'</td>	
+							</tr>';
+
+						 }
+
+							?>
+
+							<!-- <tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+							</tr>
+
+
 							<tr>
 								<td>
 									<img src="img/people.png">
@@ -131,21 +191,7 @@
 									<p>John Doe</p>
 								</td>
 								<td>01-10-2021</td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 				</div>

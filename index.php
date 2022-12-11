@@ -5,25 +5,16 @@ $sql = "SELECT * FROM `userlist` WHERE 1";
 $result1 = mysqli_query($conn, $sql);
 $userids=array();
 $usertime=array();
-
+$warning="Warning";
 while ($row = mysqli_fetch_array($result1) ) { 
   
        echo $row['userId'];
 	   array_push($userids,$row['userId']);
 	   array_push($usertime,$row['Time']);
-
-
-
-   
- 
-   
-
 }
 
-// for($i=0;$i<=100;$i++){
-// 	echo $userinfo[0];
-// }
-
+$soundsensorVal1=0;
+$soundsensorVal2=90;
 ?>
 
 
@@ -139,8 +130,8 @@ while ($row = mysqli_fetch_array($result1) ) {
 							<tr>
 								<th>UserID</th>
 								<!-- <th>Date</th> -->
-								<th>keep Time</th>
-								<th>Take Time</th>
+								<th>Time</th>
+								<!-- <th>Take Time</th> -->
 							</tr>
 						</thead>
 						<tbody>
@@ -162,51 +153,26 @@ while ($row = mysqli_fetch_array($result1) ) {
 
 							?>
 
-							<!-- <tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-							</tr>
-
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-							</tr> -->
+							
 						</tbody>
 					</table>
 				</div>
-				<div class="todo">
+				<d iv class="todo">
 					<div class="head">
 						<h3>Talking Signal</h3>
 
 					</div>
 					<ul class="todo-list">
 						<li class="completed">
-							<p>Table-1</p>
+						
+
+							<p>Table           <?php if($soundsensorVal1>=25) echo '<p style="color:red">Making noise</p>'; 
+							                                      else echo '<p style="color:green">OK</p>'; ?></p>
 						</li>
-						<li class="completed">
-							<p>Table-2</p>
-						</li>
+						<!-- <li class="completed">
+							<p>Table-2           <?php if($soundsensorVal2>=25) echo '<p style="color:red">Making noise</p>'; 
+							                                      else echo '<p style="color:green">OK</p>'; ?></p>
+						</li> -->
 					</ul>
 				</div>
 			</div>
